@@ -94,11 +94,13 @@ var dessertCategories = function(desserts) {
   var result = {};
   _.reduce(desserts, function(memo, dessert) {
     if (result[dessert.type] === undefined) {
-      return result[dessert.type] = memo;
+      result[dessert.type] = 1;
+      return result;
     } else {
-      return result[dessert.type]++;
+      result[dessert.type]++;
+      return result;
     }
-  }, 1);
+  }, result);
   return result;
 };
 
@@ -112,7 +114,7 @@ var ninetiesKid = function(movies) {
     if (movie.releaseYear >= 1990 && movie.releaseYear <= 2000) {
       return result.push(movie.title);
     }
-  });
+  }, result);
 
   return result;
 
